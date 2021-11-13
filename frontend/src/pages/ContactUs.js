@@ -1,9 +1,9 @@
 import React from 'react'
 
-export default function Home() {
+export default function ContactUs() {
     return (
         <div>
-          Hello  
+            
         </div>
     )
 }

@@ -1,9 +1,9 @@
 import React from 'react'
 
-export default function Home() {
+export default function Events() {
     return (
         <div>
-          Hello  
+            hello from events
         </div>
     )
 }
