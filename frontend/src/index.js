@@ -6,11 +6,11 @@ import Home from './pages/Home';
 import Navbar from './pages/Navbar';
 import Events from './pages/Events';
 import Login from './pages/Login';
-import SignUp from './pages/SignUp';
+import SignUp from './pages/Signup';
 import ContactUs from './pages/ContactUs';
 import MyTickets from './pages/MyTickets';
 import EventDetails from './pages/EventDetails';
-
+import Footer from './pages/Footer'
 
 ReactDOM.render(
   <React.StrictMode>
@@ -25,6 +25,7 @@ ReactDOM.render(
         <Route path="/mytickets" element={<MyTickets/>}/>
         <Route path="/events/:eventTerm" element={<EventDetails/>}/>
       </Routes>
+      <Footer/>
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
