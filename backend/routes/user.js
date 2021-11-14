@@ -6,7 +6,7 @@ const md5 = require('md5');
 
 // get user details
 router.get('/', authenticateToken, function (req, res) {
-  res.send('Birds home page')
+  return res.json(req.user);
 });
 
 // exchange username & password with token
@@ -17,7 +17,7 @@ router.post('/login', async (req, res) => {
 
   let user = await users.findOne({email: req.body.email, password: md5(req.body.password)})
   if(user) {
-    const generatedToken = await generateAccessToken(`${user.id}`);
+    const generatedToken = await generateAccessToken(`${user._id}`);
     res.json({token: generatedToken});
   }
   return res.status(403).json({error: "Wrong email or password"});
