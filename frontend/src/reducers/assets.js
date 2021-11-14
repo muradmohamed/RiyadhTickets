@@ -10,7 +10,7 @@ const assetsReducer =(state= initialState, {type,payload})=>{
             return {...state, showLogin: !state.showLogin}
 
         case "SHOW_SIGNUP":
-            return {...state, showLogin: !state.showSignup}
+            return {...state,  showSignup: !state.showSignup}
  
      default:
        return state;

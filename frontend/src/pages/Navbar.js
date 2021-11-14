@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import logo from "../images/RiyadhTiket logo.png";
 import { showLogin, showSignup } from "../reducers/assets";
-import Login from "./Login";
 
 export default function Navbar() {
   const state = useSelector((state) => ({...state.assets}));
@@ -56,7 +55,7 @@ export default function Navbar() {
       
         </Link>
 
-         <Link className='p-2' to='/signup'>
+         <Link className='p-2' to='/'>
         <button class="w-30  h-8 px-5 rounded-full bg-purple1 bg-opacity-20  text-purple1 font-bold uppercase hover:bg-pink-800  hover:text-pink-50"
          onClick={() => dispatch(showSignup())} type="button">SIGN UP</button>
         </Link>         

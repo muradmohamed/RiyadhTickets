@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { showLogin } from '../reducers/assets';
 
-export default function Login(props) {
+export default function Login() {
     const state = useSelector((state) => ({...state.assets}));
 
     const dispatch = useDispatch();
