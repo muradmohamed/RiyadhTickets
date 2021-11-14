@@ -1,5 +1,5 @@
 const express = require('express');
-const Users = require('./routes/users');
+const User = require('./routes/user');
 const Tickets = require('./routes/tickets');
 const Events = require('./routes/events');
 const app = express();
@@ -10,7 +10,7 @@ app.use(cors());
 app.use(express.json());
 
 // routers
-app.use('/users', Users)
+app.use('/user', User)
 app.use('/tickets', Tickets)
 app.use('/events', Events)
 
