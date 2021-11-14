@@ -1,14 +1,23 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useDispatch, useSelector } from "react-redux";
+import { ContextStore } from '../context';
 import { showLogin } from '../reducers/assets';
 
 export default function Login() {
     const state = useSelector((state) => ({...state.assets}));
-
     const dispatch = useDispatch();
-  
+    const {Toast} = useContext(ContextStore);
+
+    const login = () => {
+      Toast.fire({
+        icon: 'success',
+        title: 'Signed in successfully'
+      });
+    }
+
     return (
         <div>
+          {typeof Toast}
             {state.showLogin ? (
             <>
            
@@ -83,7 +92,7 @@ export default function Login() {
                           className="bg-gray-900 text-white active: bg-purple1 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full"
                           type="button"
                           style={{ transition: "all .15s ease" }}
-                          onClick={() =>  dispatch(showLogin())}  >
+                          onClick={() =>  login()}  >
                           Sign In
                         </button>
                       </div>
