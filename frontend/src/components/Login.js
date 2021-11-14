@@ -17,7 +17,6 @@ export default function Login() {
 
     return (
         <div>
-          {typeof Toast}
             {state.showLogin ? (
             <>
            
