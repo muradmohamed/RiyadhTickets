@@ -7,21 +7,17 @@ import { ContextStore } from '../context'
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
-{/* <a href="#"className="p-2 " >
-       <span className="text-orang1 inline"> Hello {user.name} <svg xmlns="http://www.w3.org/2000/svg" className=" w-9 h-8 inline" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-</svg></span> </a> */}
 export default function UserDropdown() {
   const {user} = useContext(ContextStore)
   
   return (
-    <Menu as="div" className="relative p-4 inline-block text-left">
+    <Menu as="a" className="p-4 ">
       <>
-        <Menu.Button className="inline-flex justify-center w-full bg-white text-sm font-medium text-gray-700 hover:bg-gray-50">
-        <svg xmlns="http://www.w3.org/2000/svg" className="mr-2 ml-2 h-5 w-5 inline" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <Menu.Button as="a" className="inline cursor-pointer">
+        <svg xmlns="http://www.w3.org/2000/svg" className="mr-2 mb-1 ml-2 h-5 w-5 inline" fill="none" viewBox="0 0 24 24" stroke="currentColor">
   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
 </svg>  Hello {user.name} 
-          <ChevronDownIcon className="-mr-1 ml-2 h-5 w-5" aria-hidden="true" />
+          <ChevronDownIcon className="inline mb-1 -mr-1 ml-2 h-5 w-5" aria-hidden="true" />
         </Menu.Button>
 
 
