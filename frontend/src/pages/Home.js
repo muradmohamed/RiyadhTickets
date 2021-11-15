@@ -1,8 +1,9 @@
 import React from "react";
-
+import Events from './Events';
 export default function Home() {
   return (
-    <div className="flex justify-between items-center">
+    <>
+    <div className="flex justify-between items-center mb-52">
       <div className="pl-20 w-2/5 items-center text-center">
         <h1 className="text-3xl  mb-10 text-purpule2 font-bold">
           The Easiest Way to Find and Book Events
@@ -18,7 +19,7 @@ export default function Home() {
         </button>
       </div>
       <div className="w-3/5">
-        {" "}
+       
         <img
           src={"/images/header2.png"}
           style={{
@@ -31,5 +32,8 @@ export default function Home() {
         />
       </div>
     </div>
+
+    <Events/>
+    </>
   );
 }
