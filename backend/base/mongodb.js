@@ -11,5 +11,5 @@ module.exports = {
     db,
     users: db.collection("users"),
     tickets: db.collection("tickets"),
-    $events: db.collection("events")
+    events: db.collection("events")
 };
