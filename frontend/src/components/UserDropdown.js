@@ -8,8 +8,7 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 export default function UserDropdown() {
-  const {user} = useContext(ContextStore)
-  
+  const {user, setToken} = useContext(ContextStore);  
   return (
     <Menu as="a" className="p-4 ">
       <>
@@ -50,12 +49,13 @@ export default function UserDropdown() {
             <form method="POST" action="#">
               <Menu.Item>
                 {({ active }) => (
-                  <button
+                  <button   
+                  onClick={() => setToken(undefined)}
                     type="submit"
                     className={classNames(
                       active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
                       'block w-full text-left px-4 py-2 text-sm'
-                    )}
+                    )} 
                   >
                     Sign out
                   </button>
