@@ -1,11 +1,33 @@
+import { useContext, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { showSignup } from '../reducers/assets';
+import axios from 'axios';
+import { ContextStore } from "../context";
 
 export default function SignUp() {
     const state = useSelector((state) => ({...state.assets}));
-
+    const {Toast, setToken} = useContext(ContextStore);
     const dispatch = useDispatch();
-  
+    const [email, setEmail] = useState("");
+    const [password, setPass] = useState("");
+    const [name, setName] = useState("");
+
+    const signup = () => {
+      axios.post('/user/register', {email, name, password}).then((res) => {
+        setToken(`Bearer ${res.data.token}`);
+        dispatch(showSignup());
+        Toast.fire({
+          icon: 'success',
+          title: 'Signed up successfully'
+        });
+      }).catch((err) => {
+        Toast.fire({
+          icon: 'error',
+          title: err.response.data.error
+        });
+      })
+      
+    }
     return (
         <div>
             {state.showSignup ? (
@@ -43,6 +65,8 @@ export default function SignUp() {
                         </label>
                         <input
                           type="text"
+                          value={name}
+                          onChange={(e) => setName(e.target.value)}
                           className="border-0 px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full"
                           placeholder="Name"
                           style={{ transition: "all .15s ease" }}
@@ -59,6 +83,8 @@ export default function SignUp() {
                         </label>
                         <input
                           type="email"
+                          value={email}
+                          onChange={(e) => setEmail(e.target.value)}
                           className="border-0 px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full"
                           placeholder="Email"
                           style={{ transition: "all .15s ease" }}
@@ -74,6 +100,8 @@ export default function SignUp() {
                         </label>
                         <input
                           type="password"
+                          value={password}
+                          onChange={(e) => setPass(e.target.value)}
                           className="border-0 px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full"
                           placeholder="Password"
                           style={{ transition: "all .15s ease" }}
@@ -85,7 +113,7 @@ export default function SignUp() {
                           className="bg-gray-900 text-white active: bg-purple1 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full"
                           type="button"
                           style={{ transition: "all .15s ease" }}
-                          onClick={() =>  dispatch(showSignup())}  >
+                          onClick={() =>  signup()}  >
                           Sign Up
                         </button>
                       </div>

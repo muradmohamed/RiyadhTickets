@@ -39,7 +39,7 @@ router.post('/register', async function (req, res) {
         return res.json({token: generatedToken});
       } catch (err) {
         // error when it's duplicated email -- (email should be "unique index" in the monogdb)
-        return res.json(403).json({error:"Already registered."})
+        return res.status(403).json({error:"Already registered."})
       }
 
 })
