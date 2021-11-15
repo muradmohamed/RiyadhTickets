@@ -34,12 +34,9 @@ ReactDOM.render(
       <SignUp/>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/events" element={<Events/>}/>
-          <Route path="/" element={<Login/>}/>
-          <Route path="/signup" element={<SignUp/>}/>
           <Route path="/contactus" element={<ContactUs/>}/>
           <Route path="/mytickets" element={<MyTickets/>}/>
-          <Route path="/events/:eventTerm" element={<EventDetails/>}/>
+          <Route path="/events/:id" element={<EventDetails/>}/>
         </Routes>
         <Footer/>
       </BrowserRouter>
