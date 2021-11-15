@@ -1,15 +1,18 @@
-const express = require('express')
+const express = require('express');
+const { events } = require('../base/mongodb');
 const router = express.Router()
 
-router.get('/', function (req, res) {
-    res.send('')
+router.get('/', async (req, res) => {
+    const data = await events.find({}).toArray();
+    res.json(data)
+});
+
+router.get('/:id', async (req, res) => {
+    const data = await events.findOne({id: parseInt(req.params.id)});
+    res.json(data);
 });
 
 
-router.post('/', async function (req, res) { 
-    // events.insertOne(req.body);
-    //   return res.json({status:"success"})
-})
 
 
 

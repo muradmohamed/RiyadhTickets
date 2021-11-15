@@ -18,7 +18,7 @@ router.post('/login', async (req, res) => {
   let user = await users.findOne({email: req.body.email, password: md5(req.body.password)})
   if(user) {
     const generatedToken = await generateAccessToken(`${user._id}`);
-    res.json({token: generatedToken});
+   return res.json({token: generatedToken});
   }
   return res.status(403).json({error: "Wrong email or password"});
 })
@@ -39,7 +39,7 @@ router.post('/register', async function (req, res) {
         return res.json({token: generatedToken});
       } catch (err) {
         // error when it's duplicated email -- (email should be "unique index" in the monogdb)
-        return res.json(403).json({error:"Already registered."})
+        return res.status(403).json({error:"Already registered."})
       }
 
 })

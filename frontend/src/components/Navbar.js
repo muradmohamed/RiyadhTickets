@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { ContextStore } from "../context";
 import { showLogin, showSignup } from "../reducers/assets";
+import { createPopper } from "@popperjs/core";
+import UserDropdown from './UserDropdown';
 
 export default function Navbar() {
   const state = useSelector((state) => ({...state.assets}));
@@ -31,7 +33,7 @@ export default function Navbar() {
         </svg>
       </div>
 
-      <div className="pr-8 md:block hidden">
+      <div className=" pr-24 md:block hidden">
         <Link className="p-4" to="/">
           Home
         </Link>
@@ -45,17 +47,17 @@ export default function Navbar() {
         </Link>
 
       {user ? <>
-      
-        <Link className="p-2" to="/">
-          <button
+    <UserDropdown/>
+        
+          {/* <button
             className = "w-30  h-8 px-3 rounded-full bg-purple1 bg-opacity-20   hover:bg-pink-50 active:bg-pink-900 font-bold uppercase text-sm  rounded shadow hover:text-pink-800"
             type="submit"
             onClick={() => setToken(undefined)}
           >
             Logout
-          </button>
+          </button> */}
       
-        </Link>
+       
       
       </> : <>
       
