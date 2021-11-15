@@ -1,18 +1,31 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { ContextStore } from '../context';
 import { showLogin } from '../reducers/assets';
-
+import axios from 'axios'
 export default function Login() {
     const state = useSelector((state) => ({...state.assets}));
     const dispatch = useDispatch();
-    const {Toast} = useContext(ContextStore);
+    const {Toast, setToken, token} = useContext(ContextStore);
+
+    const [email, setEmail] = useState("");
+    const [password, setPass] = useState("");
 
     const login = () => {
-      Toast.fire({
-        icon: 'success',
-        title: 'Signed in successfully'
-      });
+      axios.post('/user/login', {email, password}).then((res) => {
+        setToken(`Bearer ${res.data.token}`);
+        dispatch(showLogin());
+        Toast.fire({
+          icon: 'success',
+          title: 'Signed in successfully'
+        });
+      }).catch((err) => {
+        Toast.fire({
+          icon: 'error',
+          title: 'Wrong username or password'
+        });
+      })
+      
     }
 
     return (
@@ -52,6 +65,8 @@ export default function Login() {
                         </label>
                         <input
                           type="email"
+                          value={email}
+                          onChange={(e) => setEmail(e.target.value)}
                           className="border-0 px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full"
                           placeholder="Email"
                           style={{ transition: "all .15s ease" }}
@@ -67,6 +82,8 @@ export default function Login() {
                         </label>
                         <input
                           type="password"
+                          value={password}
+                          onChange={(e) => setPass(e.target.value)}
                           className="border-0 px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full"
                           placeholder="Password"
                           style={{ transition: "all .15s ease" }}
