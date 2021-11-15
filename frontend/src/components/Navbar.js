@@ -5,6 +5,7 @@ import { ContextStore } from "../context";
 import { showLogin, showSignup } from "../reducers/assets";
 import { createPopper } from "@popperjs/core";
 import UserDropdown from './UserDropdown';
+
 export default function Navbar() {
   const state = useSelector((state) => ({...state.assets}));
   const {user, setToken} = useContext(ContextStore);
