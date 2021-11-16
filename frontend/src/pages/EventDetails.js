@@ -16,13 +16,13 @@ export default function EventDetails() {
        })
 
     },[])
-
+  if(!Object.keys(eventsDetails).length ) return <div>Loading</div>
     return (
     <div>
    <div className=' p-10  mb-18 '>
        {/* {JSON.stringify(eventsDetails)} */}
-       <img className=' rounded-xl' src= "https://s3.ticketmx.com/uploads/images/24cc2f18d6eefe8b8d2c2702861e80bf5f532306.jpg?w=1920&h=700&mode=crop&bgcolor=black&format=jpg" alt=""/>
-       {/* <img className=' rounded-xl' src= {eventsDetails.header_image} alt=""/> */}
+       {/* <img className=' rounded-xl' src= "https://s3.ticketmx.com/uploads/images/24cc2f18d6eefe8b8d2c2702861e80bf5f532306.jpg?w=1920&h=700&mode=crop&bgcolor=black&format=jpg" alt=""/> */}
+       <img className=' rounded-xl' src= {eventsDetails.header_image} alt=""/>
    </div>
    {/* details */}
 
@@ -58,16 +58,16 @@ export default function EventDetails() {
                 height="24"
               />
             </svg>
-            <span className="relative">CIRQUE DU SOLEIL - MESSI 10</span>
-            {/* <span className="relative">{eventsDetails.title}</span> */}
+            {/* <span className="relative">CIRQUE DU SOLEIL - MESSI 10</span> */}
+            <span className="relative">{eventsDetails.title}</span>
           </span>
          
         </h2>
         <p className="text-base  text-darkblue md:text-lg">
-        {/* {eventsDetails.description} */}
-        Famous for its spectacular performances, the International Circus (Cirque du Soleil) 
+        {eventsDetails.description}
+        {/* Famous for its spectacular performances, the International Circus (Cirque du Soleil) 
         presents the Messi 10 show, which narrates his life story from childhood until he became one of the greatest football players in the world. It is the first show of Cirque du Soleil to present the true story in the form of a fictional circus show. You will spend 
-        an hour and a half in an atmosphere full of fun and excitement.
+        an hour and a half in an atmosphere full of fun and excitement. */}
         </p>
       </div>
       <div className="grid max-w-screen-lg gap-8 lg:grid-cols-2 sm:mx-auto">
@@ -93,12 +93,12 @@ export default function EventDetails() {
 
 
             <div>
-              <h6 className="mb-2 font-semibold text-darkblue leading-5">
+              <h6 className="mb-2 font-semibold text-darkblue leading-5 font-extrabold">
                 Date
               </h6>
               <p className="text-sm text-darkblue">
-              Wednesday, 10 November 2021 - Friday, 10 December 2021
-               {/* {eventsDetails.start_date} */}
+              {/* Wednesday, 10 November 2021 - Friday, 10 December 2021 */}
+               {eventsDetails.start_date}
 
               </p>
               <hr className="w-full my-6 border-darkblue" />
@@ -123,12 +123,12 @@ export default function EventDetails() {
               </div>
             </div>
             <div>
-              <h6 className="mb-2 font-semibold leading-5 text-darkblue">
+              <h6 className="mb-2 font-semibold leading-5 text-darkblue font-extrabold">
               Venue
               </h6>
               <p className="text-sm text-darkblue">
-              Blvd , Arena
-              {/* {eventsDetails.venue} */}
+              {/* Blvd , Arena */}
+              {eventsDetails.venue}
               </p>
               <hr className="w-full my-6 border-darkblue" />
             </div>
@@ -152,7 +152,7 @@ export default function EventDetails() {
               </div>
             </div>
             <div>
-              <h6 className="mb-2 font-semibold leading-5 text-darkblue">
+              <h6 className="mb-2 font-semibold leading-5 text-darkblue font-extrabold">
               Price including VAT
 
               </h6>
@@ -186,32 +186,13 @@ export default function EventDetails() {
 
 
             <div>
-              <h6 className="mb-2 font-semibold leading-5 text-darkblue">
+              <h6 className="mb-2 font-semibold leading-5 text-darkblue font-extrabold">
               Terms & Conditions
               </h6>
               <p className="text-sm text-darkblue">
               <ul className='list-disc md:list-disc'>
-                  <li>To enter this event, you should be “vaccinated” in Tawakkalna application. </li>
-                  <li>Tickets are non-cancellable, refundable, or switched.</li>
-                  <li>All tickets are VAT included.</li>
-                  <li>It illegal to resale the tickets. </li>
-                  <li>The ticket holder is solely responsible for checking the date, time, location, and the age restriction of the event. Two hours early arrival is recommended, and the organizer shall have the right to refuse any late entries and the ticket holder shall not have the right to claim for
-                 the reimbursement of the ticket price or any compensation whatsoever.</li>
-                  <li>All tickets holders and their belongings may be subject to search when entering the venue. Prohibited and dangerous items will be confiscated. Any item which the organizer or venue security personnel consider as security 
-                      risk or that may be used to damage the venue or interfere with the event will be confiscated.</li>
-                  <li>Kids under 12 should be with an adult.</li>
-                  <li>All cameras are not allowed. 
-                      In case if using your phone camera, flash is not allowed.</li>
-                  <li>The ticket holder consents to the photographs, 
-                      video clips and audio clips that may be posted on the internet.</li>
-                  <li>The organizer shall not be liable for any injuries, illness, death of any visitor, 
-                      loss or damage to collectibles due to causes arising from the event.</li>
-                  <li>The organizer has the right to expel whoever commits a violation.</li>
-                  <li>The ticket holder must adhere to the seat number.</li>
-                  <li>In purchasing this ticket, you agree to abide by all the terms and conditions and adhere to any other responsible terms and conditions or restrictions provided by the organizer before or during the event.
-</li>
 
-
+              <div dangerouslySetInnerHTML={{__html: eventsDetails.terms}}></div>
               </ul>
                {/* {eventsDetails.start_date} */}
 
@@ -230,114 +211,44 @@ export default function EventDetails() {
                 <tr>
                   <th
                     scope="col"
-                    className="px-6 py-3 text-left text-xs font-medium  text-gray uppercase tracking-wider"
+                    className="px-6 py-3 text-left text-xs font-medium  font-extrabold  text-gray uppercase tracking-wider"
                   >
                     Ticket Class
                   </th>
                   <th
                     scope="col"
-                    className="px-6 py-3 text-left text-xs font-medium text-gray uppercase tracking-wider"
+                    className="px-6 py-3 text-left text-xs font-medium text-gray uppercase tracking-wider font-extrabold"
                   >
                     Price Including VAT
                   </th>
                 </tr>
               </thead>
-              <tbody className="bg-white divide-y divide-gray-50">
-                  <tr>
-                  <td className="px-6 py-4 whitespace-nowrap">
+              <tbody className="bg-white divide-y divide-gray-50 ">
+                  {Object.keys(eventsDetails.prices).map((key)=>
+                     <tr>
+                  <td className="px-6 py-4 whitespace-nowrap font-bold">
                       <div className="flex items-center">
                         <div className="flex-shrink-0 h-10 w-10 text-darkblue">
-                          A
+                         {key}
                         </div>
                      
                       </div>
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap">
-                      <div className="text-sm text-darkblue">955 SAR</div>
+                    <td className="px-6 py-4 whitespace-nowrap font-bold">
+                      <div className="text-sm text-darkblue">{eventsDetails.prices[key]} SAR</div>
                    
                     </td>
                   </tr>
-                  <tr>
-                  <td className="px-6 py-4 whitespace-nowrap">
-                      <div className="flex items-center">
-                        <div className="flex-shrink-0 h-10 w-10 text-darkblue">
-                          B
-                        </div>
-                     
-                      </div>
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap">
-                      <div className="text-sm text-darkblue">575 SAR</div>
                    
-                    </td>
-                  </tr>
-              
-                  <tr>
-                  <td className="px-6 py-4 whitespace-nowrap">
-                      <div className="flex items-center">
-                        <div className="flex-shrink-0 h-10 w-10 text-darkblue">
-                        C
-                        </div>
-                     
-                      </div>
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap">
-                      <div className="text-sm text-darkblue"> 345 SAR</div>
-                   
-                    </td>
-                  </tr>
-
-                  <tr>
-                  <td className="px-6 py-4 whitespace-nowrap">
-                      <div className="flex items-center">
-                        <div className="flex-shrink-0 h-10 w-10 text-darkblue">
-                         VIP
-                        </div>
-                     
-                      </div>
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap">
-                      <div className="text-sm text-darkblue"> 1,610 SAR</div>
-                   
-                    </td>
-                  </tr>
-
-                  <tr>
-                  <td className="px-6 py-4 whitespace-nowrap">
-                      <div className="flex items-center">
-                        <div className="flex-shrink-0 h-10 w-10 text-darkblue">
-                        VVIP
-                        </div>
-                     
-                      </div>
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap">
-                      <div className="text-sm text-darkblue"> 2,070 SAR</div>
-                   
-                    </td>
-                  </tr>
-
-                  <tr>
-                  <td className="px-6 py-4 whitespace-nowrap">
-                      <div className="flex items-center">
-                        <div className="flex-shrink-0 h-10 w-10 text-darkblue">
-                        Handicap
-                        </div>
-                     
-                      </div>
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap">
-                      <div className="text-sm text-darkblue"> 300 SAR</div>
-                   
-                    </td>
-                  </tr>
+                  )}
+                 
               </tbody>
             </table>
           </div>
           <img
             className="object-cover w-full h-48 rounded shadow-lg"
-            src="https://s3.ticketmx.com/uploads/images/8713650c9e24c8e052d657379da8f706255afaea.jpg?w=200"
-            // src={eventsDetails.orignizer_image}
+            // src="https://s3.ticketmx.com/uploads/images/8713650c9e24c8e052d657379da8f706255afaea.jpg?w=200"
+            src={eventsDetails.orignizer_image}
             alt=""
           />
           <img
@@ -352,7 +263,7 @@ export default function EventDetails() {
         
       </div>
       <div className='grid grid-cols-1  pt-24 items-center '>
-    <button className="inline-block text-center  bg-orang1 border border-transparent rounded-md py-3 px-8 font-medium text-white hover:bg-indigo-700">
+    <button className="inline-block text-center  bg-orang1 border border-transparent rounded-md py-3 px-8 font-medium text-white font-bold uppercase hover:bg-indigo-700">
              
              Book Now
               </button>

@@ -33,7 +33,7 @@ export default function Events() {
                   height="24"
                 />
               </svg>
-              <span className="relative text-darkblue">Discover the latest events </span>
+              <span className="relative text-darkblue ">Discover The Latest Events </span>
             </span>
           </h2>
         
