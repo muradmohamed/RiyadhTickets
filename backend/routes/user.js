@@ -1,12 +1,13 @@
 const express = require('express');
 const { generateAccessToken, authenticateToken } = require('../base/jwt');
 const router = express.Router()
-const {users} = require('../base/mongodb');
+const {users, events} = require('../base/mongodb');
 const md5 = require('md5');
 
 // get user details
-router.get('/', authenticateToken, function (req, res) {
-  return res.json(req.user);
+router.get('/', authenticateToken, async (req, res) => {
+  const myEvents = await events.find({id: {$in: req.user.tickets.map(ticket => ticket.event_id)}}).toArray();
+  return res.json({...req.user, tickets: req.user.tickets.map(ticket => ({...ticket, event: myEvents.find(eve => eve.id === ticket.event_id)}))});
 });
 
 // exchange username & password with token
