@@ -17,7 +17,8 @@ const authenticateToken = async (req, res, next) => {
       //console.log(err);
       if (err) return res.sendStatus(403)
       req.user = await users.findOne({_id: ObjectId(user_id)});
-  
+      if(!req.user.tickets) req.user.tickets = []; 
+      
       next()
     });
 
