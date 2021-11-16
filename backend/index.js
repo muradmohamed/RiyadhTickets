@@ -1,6 +1,5 @@
 const express = require('express');
 const User = require('./routes/user');
-const Tickets = require('./routes/tickets');
 const Events = require('./routes/events');
 const app = express();
 const port = 8080;
@@ -11,7 +10,6 @@ app.use(express.json());
 
 // routers
 app.use('/user', User)
-app.use('/tickets', Tickets)
 app.use('/events', Events)
 
 
