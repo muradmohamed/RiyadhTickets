@@ -1,10 +1,11 @@
 import React from 'react'
 import {useState, useEffect} from 'react'
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
 export default function Reservation() {
+  const navigate = useNavigate();
     const {id}= useParams();
     const[eventsDetails, setEventsDetails] = useState({});
     useEffect(() => { 
@@ -25,7 +26,12 @@ export default function Reservation() {
                text: 'Redirecting to ticket .....',
                icon: 'success',
                showCancelButton: false,
-               showConfirmButton: false
+               showConfirmButton: false,
+               timer: 1500,
+               timerProgressBar: true,
+               didClose: () => {
+                navigate("/mytickets");
+               }
            } 
            )
         })
@@ -71,7 +77,7 @@ export default function Reservation() {
       </div>
       <div className="grid gap-8 row-gap-5 md:row-gap-8 lg:grid-cols-3">
       {Object.keys(eventsDetails.prices).map((key)=>
-        <div className="p-5 duration-300 transform bg-white
+        <div className="p-5 cursor-pointer duration-300 transform bg-white
          border-2 border-dashed rounded shadow-sm  border-purple1
           hover:-translate-y-2"  onClick={()=> book(key) }>
           <div className="flex items-center mb-2 text-center">

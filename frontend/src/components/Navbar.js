@@ -49,16 +49,6 @@ export default function Navbar() {
       {user ? <>
     <UserDropdown/>
         
-          {/* <button
-            className = "w-30  h-8 px-3 rounded-full bg-purple1 bg-opacity-20   hover:bg-pink-50 active:bg-pink-900 font-bold uppercase text-sm  rounded shadow hover:text-pink-800"
-            type="submit"
-            onClick={() => setToken(undefined)}
-          >
-            Logout
-          </button> */}
-      
-       
-      
       </> : <>
       
       <Link className="p-2" to="/">
