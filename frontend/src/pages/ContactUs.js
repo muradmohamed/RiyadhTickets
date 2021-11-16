@@ -1,6 +1,12 @@
-import React from 'react'
+import {useNavigate} from 'react-router-dom';
+
+import Swal from 'sweetalert2';
 
 export default function ContactUs() {
+
+    const navigate = useNavigate()
+
+
     return (
         <div className="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
 
@@ -96,7 +102,21 @@ export default function ContactUs() {
                   </div>
                 </div>
                 <div className="p-2 w-full">
-                  <button className="flex mx-auto text-white bg-orang1 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">
+                  <button 
+                  className="flex mx-auto text-white bg-orang1 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg"
+                  onClick={()=>Swal.fire({
+                    title: 'Thank You Your Contact',
+                    icon: 'success',
+                    showCancelButton: false,
+                    showConfirmButton: false,
+                    timer: 1500,
+                    timerProgressBar: true,
+                    didClose: () => {
+                    navigate("/");
+                    }
+                } 
+                )}
+                  >
                     SUBMIT
                   </button>
                 </div>
