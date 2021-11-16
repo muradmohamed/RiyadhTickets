@@ -60,7 +60,6 @@ export default function Events() {
                 {event.start_date}
                 </p>
                 <div className="flex items-center justify-center space-x-3">
-            
                 </div>
               </div>
             </div>
