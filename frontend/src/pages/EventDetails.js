@@ -63,12 +63,7 @@ export default function EventDetails() {
           </span>
          
         </h2>
-        <p className="text-base  text-darkblue md:text-lg">
-        {eventsDetails.description}
-        {/* Famous for its spectacular performances, the International Circus (Cirque du Soleil) 
-        presents the Messi 10 show, which narrates his life story from childhood until he became one of the greatest football players in the world. It is the first show of Cirque du Soleil to present the true story in the form of a fictional circus show. You will spend 
-        an hour and a half in an atmosphere full of fun and excitement. */}
-        </p>
+        <p className="text-base  text-darkblue md:text-lg text-center" dangerouslySetInnerHTML={{__html: eventsDetails.description}} />
       </div>
       <div className="grid max-w-screen-lg gap-8 lg:grid-cols-2 sm:mx-auto">
         <div className="flex flex-col justify-center">
@@ -192,7 +187,7 @@ export default function EventDetails() {
               <p className="text-sm text-darkblue">
               <ul className='list-disc md:list-disc'>
 
-              <div dangerouslySetInnerHTML={{__html: eventsDetails.terms}}></div>
+              <div className="text-left" dangerouslySetInnerHTML={{__html: eventsDetails.terms}}></div>
               </ul>
                {/* {eventsDetails.start_date} */}
 
