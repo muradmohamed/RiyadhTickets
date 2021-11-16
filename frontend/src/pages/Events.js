@@ -10,6 +10,7 @@ export default function Events() {
         })
     },[])
     return (
+
         <div className="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
         <div className="max-w-xl mb-10 md:mx-auto sm:text-center lg:max-w-2xl md:mb-12">
           <div>
@@ -44,6 +45,13 @@ export default function Events() {
               <span className="relative text-darkblue ">Discover The Latest Events </span>
             </span>
           </h2>
+
+     
+    <div className="flex flex-wrap pb-16 bg-white shadow overflow-hidden sm:rounded-lg">
+  {events.map(event =>   <div className="w-full p-6 sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/6 mb-4 bg-gray-500">
+       <Link to={`/events/${event.id}`}><img className="rounded-lg" src={event.image} alt=""/></Link>
+   </div>)}
+  </div>
         
         </div>
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
