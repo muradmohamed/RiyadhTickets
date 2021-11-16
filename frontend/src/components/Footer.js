@@ -19,7 +19,7 @@ export default function Footer() {
                 <div className="md:max-w-md lg:col-span-2">
                 
                     <span className="ml-2 text-xl font-bold tracking-wide text-darkblue uppercase">
-                     Riyadh Tikets
+                     Riyadh Tickets
                     </span>
                  
                   <div className="mt-4 lg:max-w-sm">

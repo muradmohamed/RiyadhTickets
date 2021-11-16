@@ -45,13 +45,6 @@ export default function Events() {
               <span className="relative text-darkblue ">Discover The Latest Events </span>
             </span>
           </h2>
-
-     
-    <div className="flex flex-wrap pb-16 bg-white shadow overflow-hidden sm:rounded-lg">
-  {events.map(event =>   <div className="w-full p-6 sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/6 mb-4 bg-gray-500">
-       <Link to={`/events/${event.id}`}><img className="rounded-lg" src={event.image} alt=""/></Link>
-   </div>)}
-  </div>
         
         </div>
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
