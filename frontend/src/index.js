@@ -16,6 +16,7 @@ import {Provider} from 'react-redux';
 import assetsReducer from './reducers/assets';
 import Context from './context';
 import axios from 'axios';
+import Reservation from './pages/Reservation';
 axios.defaults.baseURL = "http://localhost:8080";
 
 const reducer = combineReducers({
@@ -37,6 +38,7 @@ ReactDOM.render(
           <Route path="/contactus" element={<ContactUs/>}/>
           <Route path="/mytickets" element={<MyTickets/>}/>
           <Route path="/events/:id" element={<EventDetails/>}/>
+          <Route path="/events/:id/booking" element={<Reservation/>} />
         </Routes>
         <Footer/>
       </BrowserRouter>
