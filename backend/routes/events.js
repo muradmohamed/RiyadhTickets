@@ -8,7 +8,7 @@ router.get('/', async (req, res) => {
 });
 
 router.get('/:id', async (req, res) => {
-    const data = await events.findOne({id: parseInt(req.params.id)});
+    const data = await events.findOne({id:req.params.id});
     res.json(data);
 });
 

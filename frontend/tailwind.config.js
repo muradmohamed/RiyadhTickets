@@ -14,7 +14,8 @@ module.exports = {
       'darkblue2':'#2F4858',
       'black':'#000000',
       'white':'#FFFFFF' ,
-       'gray':'#6B7280'
+       'gray':'#6B7280',
+       'gray-50':'#F9FAFB'
     },
   variants: {
     extend: {},
