@@ -204,7 +204,7 @@ export default function EventDetails() {
 
         <div className="grid grid-cols-2 gap-5 md:my-auto">
 
-          <div className="object-cover w-full h-56 col-span-2  rounded shadow-lg mb-64">
+          <div className="object-cover w-full col-span-2  rounded shadow-lg">
             
             <table className="min-w-full divide-y  divide-gray-50 rounded shadow-lg ">
               <thead className="bg-gray-50">
