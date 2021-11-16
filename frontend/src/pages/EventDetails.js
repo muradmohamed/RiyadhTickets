@@ -1,8 +1,7 @@
 import axios from 'axios';
 import {useState, useEffect} from 'react'
 import { useParams } from 'react-router-dom';
-import Button from "@material-tailwind/react/Button";
-
+import Reservation from './Reservation';
 
 export default function EventDetails() {
     const {id}= useParams();
@@ -263,7 +262,9 @@ export default function EventDetails() {
         
       </div>
       <div className='grid grid-cols-1  pt-24 items-center '>
-    <button className="inline-block text-center  bg-orang1 border border-transparent rounded-md py-3 px-8 font-medium text-white font-bold uppercase hover:bg-indigo-700">
+    <button className="inline-block text-center  bg-orang1 border border-transparent rounded-md py-3 px-8 font-medium text-white font-bold uppercase hover:bg-indigo-700"
+    onClick={<Reservation />}
+    >
              
              Book Now
               </button>
