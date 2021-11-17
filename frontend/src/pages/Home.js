@@ -13,7 +13,7 @@ export default function Home() {
           </h1>
           <p></p>
           <button
-            className=" px-2 py-2 px-3  rounded-full bg-orang1 text-white hover:bg-orang2  active:bg-orang2  font-bold uppercase text-sm shadow hover:text-graylight"
+            className="px-2 py-2 px-3  rounded-full bg-orang1 text-white hover:bg-orang2  active:bg-orang2  font-bold uppercase text-sm shadow hover:text-graylight"
             type="submit"
             onClick={() =>
               event.current.scrollIntoView({

@@ -19,9 +19,9 @@ router.post('/login', async (req, res) => {
   let user = await users.findOne({email: req.body.email, password: md5(req.body.password)})
   if(user) {
     const generatedToken = await generateAccessToken(`${user._id}`);
-   return res.json({token: generatedToken});
+    return res.json({token: generatedToken});
   }
-  return res.status(403).json({error: "Wrong email or password"});
+  return res.status(403).json({error: "Wrong Email or Password"});
 })
 
 // exchange register with token

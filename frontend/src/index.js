@@ -21,7 +21,7 @@ axios.defaults.baseURL = "http://localhost:8080";
 
 const reducer = combineReducers({
   assets:assetsReducer,
- 
+
 })
 const store = createStore(reducer);
 ReactDOM.render(
