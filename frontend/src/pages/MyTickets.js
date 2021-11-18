@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { ContextStore } from "../context";
@@ -5,9 +6,15 @@ import { ContextStore } from "../context";
 
 export default function MyTickets() {
 
-  const { user } = useContext(ContextStore);
+  const { user, setUser } = useContext(ContextStore);
 
+  const removeTicket = (index) => {
+    axios.delete(`/user/ticket/${index}`).then((res) => {
 
+      setUser({...user, tickets: user.tickets.filter((t,i) => i !== index)});
+
+    })
+  }
 
   if (!user) return <div>Loading</div>;
   return (
@@ -49,7 +56,7 @@ export default function MyTickets() {
       <div className="grid max-w-md gap-10 row-gap-8 lg:max-w-screen-lg sm:row-gap-10 lg:grid-cols-3 xl:max-w-screen-lg sm:mx-auto">
         {user.tickets.map((ticket, index) => (
           <div className="flex flex-col transition duration-300 bg-white rounded shadow-sm hover:shadow">
-            <div className="relative w-full h-48">
+            <div className="relative w-full h-65">
               <img
                 src={ticket.event.image}
                 className="  w-full h-full rounded-t"
@@ -62,22 +69,34 @@ export default function MyTickets() {
                   {" "}
                   Ticket Class: {ticket.class}
                 </div>
-                <p className="text-sm pb-2  text-darkblue">
-                  {ticket.event.title}
-                </p>
+                <p className="text-sm pb-2  text-darkblue"
+              dangerouslySetInnerHTML={{ __html: ticket.event.title }}
+                />
               </div>
 
               <img
-                src={`https://api.qrserver.com/v1/create-qr-code/?color=000000&bgcolor=FFFFFF&data=${++index}&qzone=1&margin=0&size=400x400&ecc=L`}
+                src={`https://api.qrserver.com/v1/create-qr-code/?color=000000&bgcolor=FFFFFF&data=${index + 1}&qzone=1&margin=0&size=400x400&ecc=L`}
                 className="object-cover w-full h-full  pb-2 rounded-t"
                 alt="Plan"
               />
+              <div className="flex gap-2">
               <Link
                 to={`/events/${ticket.event.id}`}
+                className="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-darkblue uppercase bold transition duration-200 rounded shadow-md  bg-graylight hover:bg-gray hover:text-graylight  focus:shadow-outline focus:outline-none"
+              >
+                Event
+              </Link>
+
+              <button
+                onClick={() => removeTicket(index)}
                 className="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white uppercase bold transition duration-200 rounded shadow-md  bg-orang1 hover:bg-orang2 hover:text-graylight  focus:shadow-outline focus:outline-none"
               >
-                Go To Event
-              </Link>
+                Attended
+              </button>
+
+              </div>
+              
+
             </div>
           </div>
         ))}

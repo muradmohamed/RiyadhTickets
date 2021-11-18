@@ -46,7 +46,7 @@ export default function Context({children}) {
 
 
 
-    return <ContextStore.Provider value={{Toast, token, setToken, user}}>
+    return <ContextStore.Provider value={{Toast, token, setToken, user, setUser}}>
     {children}
     </ContextStore.Provider>
 
