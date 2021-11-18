@@ -17,6 +17,11 @@ export default function SignUp() {
       .post("/user/register", { email, name, password })
       .then((res) => {
         setToken(`Bearer ${res.data.token}`);
+        // reset data
+        setEmail("");
+        setPass("");
+        setName("");
+
         dispatch(showSignup());
         Toast.fire({
           icon: "success",

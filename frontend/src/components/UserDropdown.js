@@ -67,7 +67,7 @@ export default function UserDropdown() {
               <Menu.Item>
                 {({ active }) => (
                   <button
-                    onClick={() => setToken(undefined)}
+                    onClick={() => setToken(false)}
                     type="submit"
                     className={classNames(
                       active ? "bg-graylight" : " text-purple1",

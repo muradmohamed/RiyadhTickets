@@ -11,9 +11,11 @@ export default function Context({children}) {
   const [user, setUser] = useState(undefined);
 
   useEffect(() => {
-    if(token === undefined) {
+    if(token === undefined) return;
+    if(token === false) { // logout
       setUser(undefined);
-      
+      setToken(undefined);
+      localStorage.removeItem("auth");
       return;
     };
 
