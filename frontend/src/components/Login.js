@@ -17,6 +17,9 @@ export default function Login() {
       .post("/user/login", { email, password })
       .then((res) => {
         setToken(`Bearer ${res.data.token}`);
+        // reset data
+        setEmail("");
+        setPass("");
         dispatch(showLogin());
         Toast.fire({
           icon: "success",
