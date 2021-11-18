@@ -1,12 +1,16 @@
 import axios from "axios";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { ContextStore } from "../context";
+import { showLogin } from "../reducers/assets";
 
 export default function EventDetails() {
+  const dispatch = useDispatch();
   const { id } = useParams();
   const [eventsDetails, setEventsDetails] = useState({});
-
+  const {user} = useContext(ContextStore)
   useEffect(() => {
     axios.get(`/events/${id}`).then((res) => {
       console.log(res.data);
@@ -238,13 +242,20 @@ export default function EventDetails() {
           </div>
         </div>
         <div className="grid grid-cols-1  pt-24 items-center ">
-          <Link
+          {user ? <Link
             className="inline-block text-center  bg-orang1 border border-transparent rounded-md py-3 px-8  text-white font-bold uppercase hover:bg-orang2"
             to={`/events/${id}/booking`}
           >
-            {" "}
-            Book Now{" "}
-          </Link>
+            Book Now
+          </Link> : 
+          
+          <button
+            className="inline-block text-center  bg-orang1 border border-transparent rounded-md py-3 px-8  text-white font-bold uppercase hover:bg-orang2"
+            onClick={() => dispatch(showLogin())}
+          >
+            Book Now
+          </button>}
+         
         </div>
       </div>
     </div>

@@ -3,6 +3,7 @@ const { generateAccessToken, authenticateToken } = require('../base/jwt');
 const router = express.Router()
 const {users, events} = require('../base/mongodb');
 const md5 = require('md5');
+const { ObjectId } = require('mongodb');
 
 // get user details
 router.get('/', authenticateToken, async (req, res) => {
@@ -43,6 +44,12 @@ router.post('/register', async function (req, res) {
         return res.status(403).json({error:"Already registered."})
       }
 
-})
+});
+
+
+router.delete(`/ticket/:index`, authenticateToken, (req, res)=> {
+  users.updateOne({_id: ObjectId(req.user._id)}, {$set : {tickets: req.user.tickets.filter((t,i) => i !== parseInt(req.params.index))}})
+  return res.json({success: true});
+});
 
 module.exports = router

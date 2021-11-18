@@ -11,6 +11,5 @@ const db = client.db("main");
 module.exports = {
     db,
     users: db.collection("users"),
-    tickets: db.collection("tickets"),
     events: db.collection("events")
 };
