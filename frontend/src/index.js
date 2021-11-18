@@ -17,7 +17,8 @@ import assetsReducer from './reducers/assets';
 import Context from './context';
 import axios from 'axios';
 import Reservation from './pages/Reservation';
-axios.defaults.baseURL = "http://localhost:8080";
+axios.defaults.baseURL =process.env.NODE_ENV === "development" ?
+"http://localhost:8080/api" : "/api";
 
 const reducer = combineReducers({
   assets:assetsReducer,
