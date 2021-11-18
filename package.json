@@ -1,0 +1,16 @@
+{
+    "name": "riyadh-tickets",
+    "version": "0.1.0",
+    "private": true,
+    "main": "backend/index.js",
+    "scripts": {
+      "build": "cd frontend; npm i; npm run build; cd ../backend; npm i",
+      "start": "node backend/index.js"
+    },
+    "engines": {
+        "node": "14.x"
+    },
+    "exports": {
+        "./": "./backend"
+    }
+  }

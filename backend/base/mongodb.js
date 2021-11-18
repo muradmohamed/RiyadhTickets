@@ -1,5 +1,6 @@
 const { MongoClient } = require('mongodb');
-const config = require('./config.json');
+let config = {mongoUrl: process.env?.mongoUrl};
+if(!process.env.mongoUrl) config = require('./config.json')
 
 const client = new MongoClient(config.mongoUrl);
 
