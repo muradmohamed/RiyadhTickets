@@ -54,7 +54,9 @@ export default function EventDetails() {
                   height="24"
                 />
               </svg>
-              <span className="relative">{eventsDetails.title}</span>
+              <span className="relative"
+              dangerouslySetInnerHTML={{ __html: eventsDetails.title }}
+                />
             </span>
           </h2>
           <p
