@@ -121,7 +121,10 @@ export default function EventDetails() {
                 <h6 className="mb-2 leading-5 text-darkblue font-extrabold">
                   Venue
                 </h6>
-                <p className="text-sm text-darkblue">{eventsDetails.venue}</p>
+                <p
+                      className="text-sm text-darkblue"
+                      dangerouslySetInnerHTML={{ __html: eventsDetails.venue }}
+                    ></p>
                 <hr className="w-full my-6 border-darkblue" />
               </div>
             </div>
