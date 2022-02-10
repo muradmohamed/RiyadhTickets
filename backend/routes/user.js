@@ -4,7 +4,7 @@ const router = express.Router()
 const {users, events} = require('../base/mongodb');
 const md5 = require('md5');
 const { ObjectId } = require('mongodb');
-
+    
 // get user details
 router.get('/', authenticateToken, async (req, res) => {
   const myEvents = await events.find({id: {$in: req.user.tickets.map(ticket => ticket.event_id)}}).toArray();
